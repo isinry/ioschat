@@ -6,4 +6,4 @@ services:
     env_file:
       - .env
     ports:
-      - "2026:8081"
+      - "3026:8081"
