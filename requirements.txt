@@ -1,2 +1,4 @@
-Flask
-requests
+python_version >= "3.10.5, < 3.11"
+Flask>=2.0.0
+flask_cors>=3.0.10
+requests>=2.25.1

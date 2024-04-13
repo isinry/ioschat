@@ -1,5 +1,4 @@
-# 使用Python 3.9 slim版作为基础镜像
-FROM python:3.10.14-slim
+FROM python:3.10.5
 
 # 设置工作目录
 WORKDIR /app
