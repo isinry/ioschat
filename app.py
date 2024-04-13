@@ -46,7 +46,7 @@ def send_text_to_gpt(messages):
             "model": "gpt-3.5-turbo",
             "messages": messages,
             "stream": False
-        })
+        }, ensure_ascii=False)
         headers = {
             'Authorization': f'Bearer {openai_api_key}',
             'User-Agent': 'Apifox/1.0.0 (https://apifox.com)',
@@ -54,7 +54,7 @@ def send_text_to_gpt(messages):
         }
 
         print('req: ', json.dumps(messages, ensure_ascii=False))
-        res = requests.post(url=url, data=payload.encode('utf-8').decode("latin-1"), headers=headers, verify=False)
+        res = requests.post(url=url, data=payload.encode('utf-8').decode("latin1"), headers=headers, verify=False)
         print(res.text)
         if 'error' in res.text:
             print("正在重试中...")
