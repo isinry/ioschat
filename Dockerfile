@@ -11,6 +11,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 设置环境变量（根据实际应用进行调整）
+ENV PYTHONIOENCODING=utf-8
 ENV OPENAI_API_BASE_URL=
 ENV OPENAI_API_KEY=
 ENV PROMPT=
