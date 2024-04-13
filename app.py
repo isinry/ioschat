@@ -1,12 +1,12 @@
-# -*- coding: utf-8 -*-
 from flask import Flask, request, Response, jsonify, render_template, send_from_directory
 import requests
 import json
 import os
+import dotenv
+dotenv.load_dotenv()
 
 openai_api_base_url = os.environ['OPENAI_API_BASE_URL']
 openai_api_key = os.environ['OPENAI_API_KEY']
-openai_api_key = os.environ['PROMPT']
 prompt = os.environ['PROMPT']
 
 app = Flask(__name__)
@@ -53,10 +53,9 @@ def send_text_to_gpt(messages):
             'Content-Type': 'application/json'
         }
 
-        print('req: ', json.dumps(messages, ensure_ascii=False))
-        # res = requests.post(url=url, data=payload.encode('utf-8').decode("latin1"), headers=headers, verify=False)
-        
-        res = requests.request("POST", url, headers=headers, data=payload, verify=False)
+        print('req: ', payload)
+        res = requests.post(url=url, data=payload.encode('utf-8'), headers=headers, verify=False)
+    
         print(res.text)
         if 'error' in res.text:
             print("正在重试中...")
@@ -94,4 +93,4 @@ if __name__ == '__main__':
     if not all([openai_api_base_url, openai_api_key, prompt]):
         print('环境变量未设置')
         exit(1)
-    app.run(host='0.0.0.0', port=8081, debug=True)
+    app.run(host='0.0.0.0', port=3026, debug=True)

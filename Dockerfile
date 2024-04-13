@@ -8,6 +8,7 @@ COPY . /app
 
 # 安装项目依赖
 RUN pip install --no-cache-dir -r requirements.txt
+RUN export PYTHONIOENCODING=utf-8
 
 # 设置环境变量（根据实际应用进行调整）
 ENV PYTHONIOENCODING=utf-8
@@ -16,7 +17,7 @@ ENV OPENAI_API_KEY=
 ENV PROMPT=
 
 # （可选）暴露应用端口
-EXPOSE 8081
+EXPOSE 3026
 
 # 定义启动命令，使用Gunicorn启动Flask应用
 CMD ["python", "app.py"]
