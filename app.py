@@ -54,7 +54,7 @@ def send_text_to_gpt(messages):
         }
 
         print('req: ', json.dumps(messages, ensure_ascii=False))
-        res = requests.post(url=url, data=payload.encode('utf-8'), headers=headers, verify=False)
+        res = requests.post(url=url, data=payload.encode('utf-8').decode("latin-1"), headers=headers, verify=False)
         print(res.text)
         if 'error' in res.text:
             print("正在重试中...")
